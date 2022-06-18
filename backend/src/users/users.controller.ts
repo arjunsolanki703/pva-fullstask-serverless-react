@@ -18,12 +18,12 @@ import {
 	CreateUserValidationPipe,
 	ExpireNumberValidationPipe,
 } from './users.validations';
-import { TellabotApiService } from '../tellabot-api/tellabot-api.service';
+import { boatApiService } from '../boat-api/boat-api.service';
 import {
 	UserHistoryValidationPipe,
 	UserProfileValidationPipe,
-} from '../tellabot-api/tellabot-api.validations';
-import { GetUserHistoryByIDDto } from '../tellabot-api/dto/InputArgs';
+} from '../boat-api/boat-api.validations';
+import { GetUserHistoryByIDDto } from '../boat-api/dto/InputArgs';
 import { AuthGuard } from '../auth/auth.guard';
 import { ApiBearerAuth, ApiParam, ApiTags } from '@nestjs/swagger';
 import { PaymentsService } from '../payments/payments.service';
@@ -33,7 +33,7 @@ import { PaymentsService } from '../payments/payments.service';
 export class UsersController {
 	constructor(
 		private usersService: UsersService,
-		private tellabotApiService: TellabotApiService,
+		private boatApiService: boatApiService,
 		private paymentService: PaymentsService
 	) {}
 
@@ -84,7 +84,7 @@ export class UsersController {
 	) {
 		try {
 			const user = await this.usersService.userprofile(req.user.id);
-			const data = await this.tellabotApiService.expirenumber(
+			const data = await this.boatApiService.expirenumber(
 				input.requestID,
 				input.is_flag
 			);
@@ -127,7 +127,7 @@ export class UsersController {
 					HttpStatus.INTERNAL_SERVER_ERROR
 				);
 			}
-			const data = await this.tellabotApiService.activenumber(req.user.id);
+			const data = await this.boatApiService.activenumber(req.user.id);
 			return response(
 				req,
 				res,
@@ -153,7 +153,7 @@ export class UsersController {
 	@Get('numberdata')
 	async getnumberdata(@Req() req: Request | any, @Res() res: Response) {
 		try {
-			const data = await this.tellabotApiService.getNumberData(
+			const data = await this.boatApiService.getNumberData(
 				req.user.id,
 				req.query.requestId
 			);
@@ -230,7 +230,7 @@ export class UsersController {
 		@Res() res: Response
 	) {
 		try {
-			const data = await this.tellabotApiService.getuserhistorybyID(
+			const data = await this.boatApiService.getuserhistorybyID(
 				query,
 				req.user.id
 			);
@@ -252,7 +252,7 @@ export class UsersController {
 	@Get('getrecentwebsite')
 	async getrecentwebsite(@Req() req: Request | any, @Res() res: Response) {
 		try {
-			const data = await this.tellabotApiService.getrecentwebsite(req.user.id);
+			const data = await this.boatApiService.getrecentwebsite(req.user.id);
 			return response(req, res, data.success, data.data, '', data.status);
 		} catch (error) {
 			// console.log('Error in user controller - getrecentwebsite', error);

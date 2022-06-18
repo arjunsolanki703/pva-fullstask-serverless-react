@@ -1,11 +1,11 @@
 import React, { useState, useRef, useEffect } from "react";
 import Navbar from "../../common/navbar";
-import TellabotService from "./tellabotService";
+import boatService from "./boatService";
 import { Redirect } from "react-router";
 import isAuthorized from "../../common/Auth";
 import Loader from "../../common/Loader";
 
-function TellabotServiceContainer(props) {
+function boatServiceContainer(props) {
   const [loading, setLoading_] = useState(0);
   const setLoading = (value) => {
     if (!isComponentMounted.current) return;
@@ -32,10 +32,10 @@ function TellabotServiceContainer(props) {
           <Navbar
             setSidebar={props.setSidebar}
             sidebar={props.sidebar}
-            currentPage="Websites for Tellabot Services"
+            currentPage="Websites for boat Services"
           />
           <div className="content-wrapper">
-            <TellabotService setLoading={setLoading} />
+            <boatService setLoading={setLoading} />
           </div>
         </div>
       </>
@@ -45,4 +45,4 @@ function TellabotServiceContainer(props) {
   }
 }
 
-export default TellabotServiceContainer;
+export default boatServiceContainer;

@@ -2,8 +2,8 @@ import { forwardRef, Module } from '@nestjs/common';
 import { AdminController } from './admin.controller';
 import { AdminService } from './admin.service';
 import { UsersModule } from '../users/users.module';
-import { TellabotServicesModule } from '../tellabot-api/tellabot-services/tellabot-services.module';
-import { TellabotApiModule } from '../tellabot-api/tellabot-api.module';
+import { boatServicesModule } from '../boat-api/boat-services/boat-services.module';
+import { boatApiModule } from '../boat-api/boat-api.module';
 import { PaymentsModule } from '../payments/payments.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { AdminSetting, AdminSettingSchema } from './admin.model';
@@ -12,8 +12,8 @@ import { Announcement, AnnouncementSchema } from './announcement.model';
 @Module({
 	imports: [
 		forwardRef(() => UsersModule),
-		TellabotServicesModule,
-		forwardRef(() => TellabotApiModule),
+		boatServicesModule,
+		forwardRef(() => boatApiModule),
 		PaymentsModule,
 		MongooseModule.forFeature([
 			{ name: AdminSetting.name, schema: AdminSettingSchema },

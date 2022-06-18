@@ -19,7 +19,7 @@ function WebsitePricing({ setLoading }) {
         Authorization: localStorage.getItem("auth"),
       },
     };
-    var PATH = `/tellabot-services/get/all?order_by=name&order=true&page=${currPage_}&limit=${rowsPerPage_}`;
+    var PATH = `/boat-services/get/all?order_by=name&order=true&page=${currPage_}&limit=${rowsPerPage_}`;
     if (search_ !== "") PATH += "&search_data=" + search_;
 
     fetch(API_URL + PATH, requestOptions)

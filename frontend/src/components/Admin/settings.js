@@ -18,8 +18,8 @@ const Settings = ({ setLoading }) => {
       <div className="mt-lg-5 mt-md-4 mt-3 mx-lg-4 mx-3 px-lg-4 p-3 bg-white box-shadow-gray border-radius-10">
         <MaintenanceMode setLoading={setLoading} signupmode={signupmode} />
         {/* <SettingFeature
-          title="Select Websites for Tellabot Services:"
-          link="/admin/settings/tellabot/websites"
+          title="Select Websites for boat Services:"
+          link="/admin/settings/boat/websites"
           linkClass="btn btn-lg px-3 bg-dark-blue text-white"
           btnTitle="Change"
         /> */}

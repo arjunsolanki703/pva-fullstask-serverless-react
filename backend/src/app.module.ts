@@ -9,7 +9,7 @@ import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { NewsModule } from './news/news.module';
 import { PaymentsModule } from './payments/payments.module';
-import { TellabotApiModule } from './tellabot-api/tellabot-api.module';
+import { boatApiModule } from './boat-api/boat-api.module';
 import { TicketModule } from './tickets/tickets.module';
 import { UsersModule } from './users/users.module';
 
@@ -25,7 +25,7 @@ import { UsersModule } from './users/users.module';
 		}),
 		UsersModule,
 		AuthModule,
-		TellabotApiModule,
+		boatApiModule,
 		PaymentsModule,
 		TicketModule,
 		AdminModule,

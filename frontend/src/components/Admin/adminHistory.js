@@ -46,7 +46,7 @@ function AdminHistory({ setLoading }) {
               const service = dataArray[ind].credit.services[0];
               const state = location.filter((o)=>o.short_name===service.state)[0]
               newHistory.push({
-                agent: "Tellabot",
+                agent: "boat",
                 customer: dataArray[ind].user_name,
                 website: service.name,
                 custom_name: service.custom_name,

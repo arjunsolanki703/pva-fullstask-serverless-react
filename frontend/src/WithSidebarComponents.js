@@ -24,7 +24,7 @@ import Pricing from "./components/Client/pricing";
 import RefillcreditesContainer from "./components/Client/ClientRefillcredites";
 import SettingsContainer from "./components/Admin/SettingsContainer";
 import Sidebar from "./components/common/sidebar";
-import TellabotServiceContainer from "./components/Admin/tellabot/tellabotServiceContainer";
+import boatServiceContainer from "./components/Admin/boat/boatServiceContainer";
 import TransactionContainer from "./components/Admin/transactionContainer";
 import UpdateTicket from "./components/Client/updateTicket";
 import ViewServiceNumber from "./components/Client/ViewServiceNumber";
@@ -429,9 +429,9 @@ function WithSidebarComponents(props) {
 
             <Route
               exact
-              path="/admin/settings/tellabot/websites"
+              path="/admin/settings/boat/websites"
               render={() => (
-                <TellabotServiceContainer
+                <boatServiceContainer
                   sidebar={sidebar}
                   setSidebar={setSidebar}
                   {...props}

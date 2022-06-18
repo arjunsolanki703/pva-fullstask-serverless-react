@@ -62,7 +62,7 @@ function WebsiteContainer({ setLoading }) {
               ltr_price: data.ltr_price,
               credit: data.credit,
               enable: data.enable,
-              tellabot: data.tellabot,
+              boat: data.boat,
               agent_accept_time: data.agent_accept_time,
               agent_handle_request: data.agent_handle_request,
               is_price_surge: data.is_price_surge,
@@ -188,7 +188,7 @@ function WebsiteContainer({ setLoading }) {
             <thead>
               <tr className="text-left">
                 <th className="text-left align-left">Websites</th>
-                <th className="text-left align-left">Tellabot</th>
+                <th className="text-left align-left">boat</th>
                 <th className="text-left align-left">Short Term Credits</th>
                 <th className="text-left align-left">Status[STR]</th>
                 <th className="text-left align-left">Long Term Credits</th>

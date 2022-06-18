@@ -14,15 +14,15 @@ import { AdminService } from './admin.service';
 import { UsersService } from '../users/users.service';
 import { errorResponse, response, sendSlackNotification } from '../utils';
 import { Request, Response } from 'express';
-import { TellabotServicesService } from '../tellabot-api/tellabot-services/tellabot-services.service';
-import { TellabotApiService } from '../tellabot-api/tellabot-api.service';
+import { boatServicesService } from '../boat-api/boat-services/boat-services.service';
+import { boatApiService } from '../boat-api/boat-api.service';
 import { PaymentsService } from '../payments/payments.service';
 import { ApiTags, ApiParam, ApiBearerAuth } from '@nestjs/swagger';
 import {
 	ListWebsiteDto,
 	AddorUpdateWebsiteDto,
 	DisableServiceDto,
-} from '../tellabot-api/tellabot-services/dto/InputArgs';
+} from '../boat-api/boat-services/dto/InputArgs';
 import {
 	ListCustomerDto,
 	AddorUpdateCustomerDto,
@@ -35,16 +35,16 @@ import {
 	AddorUpdateValidationPipe,
 	ListWebsiteValidationPipe,
 	DisableServicetValidationPipe,
-} from '../tellabot-api/tellabot-services/tellabot-service.validations';
+} from '../boat-api/boat-services/boat-service.validations';
 import {
 	ListTransactionDto,
 	GetTransactionDto,
-} from '../tellabot-api/dto/InputArgs';
+} from '../boat-api/dto/InputArgs';
 import { ListPaymentDto } from '../payments/dto/InputArgs';
 import {
 	ListTransactionValidationPipe,
 	GetTransactionValidationPipe,
-} from '../tellabot-api/tellabot-api.validations';
+} from '../boat-api/boat-api.validations';
 import { ListPaymentValidationPipe } from '../payments/payments.validations';
 import { AdminSettingDto ,SignupmodeDto} from './dto/InputArgs';
 import { MaintenanceValidationPipe,SignupValidationPipe } from './admin.validations';
@@ -57,8 +57,8 @@ export class AdminController {
 	constructor(
 		private adminService: AdminService,
 		private usersService: UsersService,
-		private tellabotServicesService: TellabotServicesService,
-		private tellabotApiService: TellabotApiService,
+		private boatServicesService: boatServicesService,
+		private boatApiService: boatApiService,
 		private paymentService: PaymentsService
 	) { }
 
@@ -158,7 +158,7 @@ export class AdminController {
 		@Res() res: Response
 	) {
 		try {
-			const data = await this.tellabotServicesService.disableservice(input);
+			const data = await this.boatServicesService.disableservice(input);
 			return response(req, res, data.success, {}, data.message, data.status);
 		} catch (error) {
 			// console.log('Error in admin controller - disableservice', error);
@@ -211,7 +211,7 @@ export class AdminController {
 		@Res() res: Response
 	) {
 		try {
-			const data = await this.tellabotApiService.gethistorybyID(query);
+			const data = await this.boatApiService.gethistorybyID(query);
 			return response(req, res, data.success, data.data, '', data.status);
 		} catch (error) {
 			// console.log('Error in Admin controller - gethistorybyID', error);
@@ -234,7 +234,7 @@ export class AdminController {
 		@Res() res: Response
 	) {
 		try {
-			const data = await this.tellabotApiService.getallhistory(query);
+			const data = await this.boatApiService.getallhistory(query);
 			return response(req, res, data.success, data.data, '', data.status);
 		} catch (error) {
 			// console.log('Error in Admin controller - getalltransaction', error);
@@ -371,7 +371,7 @@ export class AdminController {
 		@Res() res: Response
 	) {
 		try {
-			const data = await this.tellabotServicesService.DeleteWebsite(param.id);
+			const data = await this.boatServicesService.DeleteWebsite(param.id);
 			if (data) {
 				return response(
 					req,
@@ -412,7 +412,7 @@ export class AdminController {
 		@Res() res: Response
 	) {
 		try {
-			const data = await this.tellabotServicesService.AddorUpdateWebsite(input);
+			const data = await this.boatServicesService.AddorUpdateWebsite(input);
 			return response(
 				req,
 				res,
@@ -442,7 +442,7 @@ export class AdminController {
 		@Res() res: Response
 	) {
 		try {
-			const data = await this.tellabotServicesService.GetAllServices(query);
+			const data = await this.boatServicesService.GetAllServices(query);
 			return response(
 				req,
 				res,
@@ -469,7 +469,7 @@ export class AdminController {
 	async getDashboard(@Req() req: Request | any, @Res() res: Response) {
 		try {
 			const users = this.usersService.GetUserCount();
-			const website = this.tellabotServicesService.GetServiceCount();
+			const website = this.boatServicesService.GetServiceCount();
 			return Promise.all([users, website]).then(function (data) {
 				return response(
 					req,

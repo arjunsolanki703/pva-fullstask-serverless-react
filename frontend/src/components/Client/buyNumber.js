@@ -30,7 +30,7 @@ const requestOptions = {
   },
 };
 fetch(
-  API_URL + "/tellabot-services/get/all?page=1&limit=1000&order=true",
+  API_URL + "/boat-services/get/all?page=1&limit=1000&order=true",
   requestOptions
 )
   .then((response) => response.json())
@@ -229,7 +229,7 @@ function BuyNumber(props) {
       },
     };
     fetch(
-      API_URL + "/tellabot-services/get/all?page=1&limit=1000&order=true",
+      API_URL + "/boat-services/get/all?page=1&limit=1000&order=true",
       requestOptions
     )
       .then((response) => response.json())

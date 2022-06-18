@@ -24,8 +24,8 @@ const SES_REGION: string = process.env.SES_REGION;
 const IAM_USER_ACCESS_KEY_ID: string = process.env.IAM_USER_ACCESS_KEY_ID;
 const IAM_USER_SECRET_KEY: string = process.env.IAM_USER_SECRET_KEY;
 
-const TELLABOT_USERNAME: string = process.env.TELLABOT_USERNAME;
-const TELLABOT_PASSWORD: string = process.env.TELLABOT_PASSWORD;
+const boat_USERNAME: string = process.env.boat_USERNAME;
+const boat_PASSWORD: string = process.env.boat_PASSWORD;
 
 const SENTRY_DSN: string = process.env.SENTRY_DSN;
 
@@ -59,8 +59,8 @@ export {
 	SES_REGION,
 	IAM_USER_ACCESS_KEY_ID,
 	IAM_USER_SECRET_KEY,
-	TELLABOT_USERNAME,
-	TELLABOT_PASSWORD,
+	boat_USERNAME,
+	boat_PASSWORD,
 	SENTRY_DSN,
 	COINPAYMENT_KEY,
 	COINPAYMENT_SECRET,

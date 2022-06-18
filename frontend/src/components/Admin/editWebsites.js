@@ -20,8 +20,8 @@ function EditWebsite(props) {
 
   const handleSubmit = () => {
     props.setLoading(true);
-    if (!editedData.tellabot) {
-      editedData["tellabot"] = true;
+    if (!editedData.boat) {
+      editedData["boat"] = true;
     }
     if (!editedData.is_price_surge) {
       editedData["is_price_surge"] = false;
@@ -84,7 +84,7 @@ function EditWebsite(props) {
             <p hidden={editedData.custom_name !== ""}>Please Fill This Field!</p>
           </div>
           <div className="form-group">
-            <label htmlFor="name">Tellabot Name</label>
+            <label htmlFor="name">boat Name</label>
             <input
               className="form-control"
               name="name"

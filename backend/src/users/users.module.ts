@@ -3,7 +3,7 @@ import { UsersService } from './users.service';
 import { UsersController } from './users.controller';
 import { MongooseModule } from '@nestjs/mongoose';
 import { User, UserSchema } from './users.model';
-import { TellabotApiModule } from '../tellabot-api/tellabot-api.module';
+import { boatApiModule } from '../boat-api/boat-api.module';
 import { AdminModule } from '../admin/admin.module';
 import { PaymentsModule } from '../payments/payments.module';
 
@@ -12,7 +12,7 @@ import { PaymentsModule } from '../payments/payments.module';
 		// AdminModule,
 		MongooseModule.forFeature([{ name: User.name, schema: UserSchema }]),
 		forwardRef(() => AdminModule),
-		forwardRef(() => TellabotApiModule),
+		forwardRef(() => boatApiModule),
 		PaymentsModule,
 	],
 	providers: [UsersService],

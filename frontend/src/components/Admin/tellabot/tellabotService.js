@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { API_URL } from "../../common/CONST";
 import CustomizedSwitches from "../settings/switch";
 
-function TellabotService({ setLoading }) {
+function boatService({ setLoading }) {
   const isComponentMounted = useRef(true);
   // eslint-disable-next-line
   const [_, setUpdate] = useState(false);
@@ -18,7 +18,7 @@ function TellabotService({ setLoading }) {
     };
     fetch(
       API_URL +
-        "/tellabot-services/get/all?page=1&limit=1000&order=true&order_by=name",
+        "/boat-services/get/all?page=1&limit=1000&order=true&order_by=name",
       requestOptions
     )
       .then((response) => response.json())
@@ -34,7 +34,7 @@ function TellabotService({ setLoading }) {
             credit: data.credit,
             enable: data.enable,
             ltr_price: data.ltr_price,
-            tellabot: data.tellabot,
+            boat: data.boat,
             agent_accept_time: data.agent_accept_time,
             agent_handle_request: data.agent_handle_request,
             is_price_surge: data.is_price_surge,
@@ -130,4 +130,4 @@ function TellabotService({ setLoading }) {
   );
 }
 
-export default TellabotService;
+export default boatService;
