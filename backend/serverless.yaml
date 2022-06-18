@@ -1,0 +1,43 @@
+service: serverlessadeals
+
+plugins:
+  # - serverless-plugin-optimize
+  - serverless-offline
+  - serverless-dotenv-plugin
+  - serverless-webpack
+
+provider:
+  name: aws
+  region: us-east-1
+  runtime: nodejs14.x
+  stage: ${opt:stage, 'dev'}
+  memorySize: 1024
+
+functions:
+  main: # The name of the lambda function
+    # The module 'handler' is exported in the file 'src/lambda'
+    handler: src/lambda.handler
+    events:
+      - http:
+          method: any
+          path: /{any+}
+          cors:
+            origin: '*'
+            headers:
+              - Content-Type
+              - X-Amz-Date
+              - Authorization
+              - Access-Control-Allow-Headers
+              - Access-Control-Allow-Origin
+            allowCredentials: true
+    layers:
+      - ${cf:nodelib-development.NodelibLayerExport}
+      - ${cf:nodelib-development.CorelibLayerExport}
+      - ${cf:nodelib-development.LibsLayerExport}
+custom:
+  webpack:
+    webpackConfig: 'webpack.config.js' # Name of webpack configuration file
+    includeModules: false # Node modules configuration for packaging
+    packager: 'yarn' # Packager that will be used to package your external modules
+    excludeFiles: ['src/**/*.test.ts', 'src/**/*.spec.ts'] # Provide a glob for files to ignore
+

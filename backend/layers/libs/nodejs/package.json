@@ -1,0 +1,26 @@
+{
+	"name": "nodejs",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"dependencies": {
+		"aws-lambda": "^1.0.6",
+		"aws-sdk": "^2.884.0",
+		"aws-serverless-express": "^3.4.0",
+		"axios": "^0.21.1",
+		"bcryptjs": "^2.4.3",
+		"class-transformer": "^0.4.0",
+		"class-validator": "^0.13.1",
+		"coingecko-api": "^1.0.10",
+		"coinpayments": "^2.1.2",
+		"coinpayments-ipn": "^1.0.0",
+		"cors": "^2.8.5",
+		"dayjs": "^1.10.5"
+		
+	},
+	"author": "",
+	"license": "ISC"
+}

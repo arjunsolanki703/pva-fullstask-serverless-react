@@ -1,0 +1,40 @@
+service: nodelib
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  lambdaHashingVersion: 20201221
+  region: us-east-1
+  stage: ${opt:stage, 'dev'}
+
+layers:
+  nodelib:
+    path: nodelib
+    compatibleRuntimes:
+      - nodejs14.x
+  corelib:
+    path: corelib
+    compatibleRuntimes:
+      - nodejs14.x
+  libs:
+    path: libs
+    compatibleRuntimes:
+      - nodejs14.x
+
+resources:
+  Outputs:
+    NodelibLayerExport:
+      Value:
+        Ref: NodelibLambdaLayer
+      Export:
+        Name: NodelibLambdaLayer
+    CorelibLayerExport:
+      Value:
+        Ref: CorelibLambdaLayer
+      Export:
+        Name: CorelibLambdaLayer
+    LibsLayerExport:
+      Value:
+        Ref: LibsLambdaLayer
+      Export:
+        Name: LibsLambdaLayer

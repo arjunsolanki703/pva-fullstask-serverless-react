@@ -1,0 +1,35 @@
+service:
+  name: serverlessadeals-jobs
+
+plugins:
+  # - serverless-plugin-optimize
+  - serverless-offline
+  - serverless-dotenv-plugin
+
+provider:
+  name: aws
+  region: us-east-1
+  runtime: nodejs14.x
+  stage: ${opt:stage, 'dev'}
+  memorySize: 256
+
+functions:
+  str-job: # The name of the lambda function
+    # The module 'handler' is exported in the file 'src/lambda'
+    handler: job-str.handler
+    events:
+      - schedule: rate(1 hour)
+    layers:
+      - ${cf:nodelib-development.NodelibLayerExport}
+      - ${cf:nodelib-development.CorelibLayerExport}
+      - ${cf:nodelib-development.LibsLayerExport}
+
+  ltr-job: # The name of the lambda function
+    # The module 'handler' is exported in the file 'src/lambda'
+    handler: job-ltr.handler
+    events:
+      - schedule: rate(1 hour)
+    layers:
+      - ${cf:nodelib-development.NodelibLayerExport}
+      - ${cf:nodelib-development.CorelibLayerExport}
+      - ${cf:nodelib-development.LibsLayerExport}
